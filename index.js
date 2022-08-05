@@ -3,6 +3,7 @@ const express = require("express"); // lấy module bên thứ 3
 const mongoose = require("mongoose");
 const cors = require("cors");
 const productRoute = require('./modules/product');
+const categoryRoute = require('./modules/category');
 
 async function main() {
   await mongoose.connect(process.env.MONGODB_URL);
@@ -13,6 +14,7 @@ async function main() {
   app.use(express.json());
 
   app.use("/api/products", productRoute);
+  app.use("/api/categorys", categoryRoute);
 
   app.listen(process.env.PORT || 8800, (err) => {
     if (err) throw err;

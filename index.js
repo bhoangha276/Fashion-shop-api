@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const productRoute = require('./modules/product');
 const categoryRoute = require('./modules/category');
+const auhthRoute = require('./modules/auth');
 
 async function main() {
   await mongoose.connect(process.env.MONGODB_URL);
@@ -15,6 +16,7 @@ async function main() {
 
   app.use("/api/products", productRoute);
   app.use("/api/categories", categoryRoute);
+  app.use("/api/auth", auhthRoute);
 
   app.listen(process.env.PORT || 8800, (err) => {
     if (err) throw err;

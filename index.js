@@ -18,6 +18,10 @@ async function main() {
   app.use("/api/categories", categoryRoute);
   app.use("/api/auth", auhthRoute);
 
+  app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+  })
+
   app.listen(process.env.PORT || 8800, (err) => {
     if (err) throw err;
     console.log("Backend server is running!");

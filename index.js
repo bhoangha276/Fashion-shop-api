@@ -18,6 +18,10 @@ async function main() {
   app.use("/api/categories", categoryRoute);
   app.use("/api/auth", auhthRoute);
 
+  app.get('/doc', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+  })
+
   app.get('/', (req, res) => {
     res.json({msg:"fashion-shop api is working! => Go to the /doc for details"})
   })
